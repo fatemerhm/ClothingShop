@@ -1,0 +1,220 @@
+﻿@using ClothingShop.Core.Domain
+@model Cart
+ <div class="app-content">
+
+ 
+            <div class="u-s-p-y-60">    
+            </div>
+            <!--====== End - Section 1 ======-->
+
+
+            <!--====== Section 2 ======-->
+            <div class="u-s-p-b-60">
+
+                <!--====== Section Intro ======-->
+                <div class="section__intro u-s-m-b-60">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section__text-wrap">
+                                    <h1 class="section__heading u-c-secondary"> سبد خرید</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Intro ======-->
+
+
+                <!--====== Section Content ======-->
+                <div class="section__content" dir="rtl">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 u-s-m-b-30">
+                                <div class="table-responsive">
+                                    <table class="table-p">
+
+                                        <tbody>
+                                            @foreach (var item in Model.CartLines)
+                                            {
+                                                  <!--====== Row ======-->
+                                            <tr>
+                                                <td>
+                                                    <div class="table-p__box">
+                                                        <div class="table-p__img-wrap">
+
+                                                            <img class="u-img-fluid" src="@item.Product.Medias[0].Path" alt=""></div>
+                                                        <div class="table-p__info" style="margin-right: 3%;">
+
+                                                            <span class="table-p__name">
+
+                                                                <a href="product-detail.html">@item.Product.Name</a></span>
+
+                                                            <span class="table-p__category">
+
+                                                              @*  <a href="shop-side-version-2.html">Electronics</a>*@</span>
+                                                            <ul class="table-p__variant-list">
+                                                                <li>
+
+                                                                    <span>@item.Product.Description</span></li>
+                                                               
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+
+                                                    <span class="table-p__price">@(item.Product.Price * item.Quantity) تومان</span></td>
+                                                <td>
+                                                    <div class="table-p__input-counter-wrap">
+
+                                                        <!--====== Input Counter ======-->
+                                                        <div class="input-counter">
+
+                                                            <span class="input-counter__minus fas fa-minus"></span>
+
+                                                            <input class="input-counter__text input-counter--text-primary-style" value="@item.Quantity"  type="text"  data-min="1" data-max="1000">
+
+                                                            <span class="input-counter__plus fas fa-plus"></span></div>
+                                                        <!--====== End - Input Counter ======-->
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                     <form method="post" asp-action="RemoveAtCart" asp-route-productId="@item.Product.ProductId">
+                                                    <div class="table-p__del-wrap">
+                                                         <input type="submit"  class="far fa-trash-alt table-p__delete-link" value="حذف"/>
+                      
+                                                        </div>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <!--====== End - Row ======-->
+                                            }
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="route-box">
+                                    <div class="route-box__g1">
+
+                                        <a class="route-box__link" href="shop-side-version-2.html"><i class="fas fa-long-arrow-alt-left"></i>
+
+                                            <span>ادامه خرید</span></a></div>
+                                    <div class="route-box__g2">
+
+                                        <a class="route-box__link" href="cart.html"><i class="fas fa-trash"></i>
+
+                                            <span>پاکسازی سبد خرید</span></a>
+
+                                        <a class="route-box__link" href="cart.html"><i class="fas fa-sync"></i>
+
+                                            <span>به روز رسانی</span></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Content ======-->
+            </div>
+            <!--====== End - Section 2 ======-->
+
+
+            <!--====== Section 3 ======-->
+            <div class="u-s-p-b-60">
+
+                <!--====== Section Content ======-->
+                <div class="section__content" >
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 u-s-m-b-30" dir="rtl">
+                                <form class="f-cart">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-6 u-s-m-b-30">
+                                            <div class="f-cart__pad-box">
+                                                <h1 class="gl-h1">اطلاعات محل زندگی</h1>
+
+                                                <span class="gl-text u-s-m-b-30">مقصد خود را برای دریافت تخمین حمل و نقل وارد کنید.</span>
+                                                <div class="u-s-m-b-30">
+
+                                                    <!--====== Select Box ======-->
+
+                                                    <label class="gl-label" for="shipping-country">استان *</label><select class="select-box select-box--primary-style" id="shipping-country">
+                                                        <option selected value="">یک استان را انتخاب کنید</option>
+                                                        <option value="uae">خوزستان</option>
+                                                        <option value="uk">شیراز</option>
+                                                        <option value="us">اصفهان</option>
+                                                    </select>
+                                                    <!--====== End - Select Box ======-->
+                                                </div>
+                                                <div class="u-s-m-b-30">
+
+                                                    <!--====== Select Box ======-->
+
+                                                    <label class="gl-label" for="shipping-state">شهر *</label><select class="select-box select-box--primary-style" id="shipping-state">
+                                                        <option selected value="">یک شهر را انتخاب کنید</option>
+                                                        <option value="al">Alabama</option>
+                                                        <option value="al">Alaska</option>
+                                                        <option value="ny">New York</option>
+                                                    </select>
+                                                    <!--====== End - Select Box ======-->
+                                                </div>
+                                                <div class="u-s-m-b-30">
+
+                                                    <label class="gl-label" for="shipping-zip">آدرس *</label>
+
+                                                    <input class="input-text input-text--primary-style" type="text" id="shipping-zip" placeholder="آدرس کامل را وارد کنید"></div>
+                                                <div class="u-s-m-b-30">
+
+                                                   </div>
+
+                                                <span class="gl-text">توجه: برخی از شهر ها وجود دارند که حمل و نقل رایگان در آنها موجود است، در غیر این صورت هزینه های نرخ ثابت یا هزینه های تحویل  اعمال می شود.</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 u-s-m-b-30">
+                                            <div class="f-cart__pad-box">
+                                                <h1 class="gl-h1">یادداشت</h1>
+
+                                                <span class="gl-text u-s-m-b-30">یادداشت ویژه در مورد کالای خود اضافه کنید</span>
+                                                <div>
+
+                                                    <label for="f-cart-note"></label><textarea class="text-area text-area--primary-style" id="f-cart-note"></textarea></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 u-s-m-b-30" dir="ltr">
+                                            <div class="f-cart__pad-box">
+                                                <div class="u-s-m-b-30">
+                                                    <table class="f-cart__table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>مجموع</td>
+                                                                <td>@Model.GetTotalPrice() تومان</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>هزینه حمل</td>
+                                                                <td>40,000 تومان</td>
+                                                            </tr>
+                                                            
+                                                            <tr>
+                                                                <td >جمع کل</td>
+                                                                <td >@(Model.GetTotalPrice()+40000) تومان</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div>
+
+                                                    <button class="btn btn--e-brand-b-2" type="submit" ><a href="~/checkout/index" style="color:white;" > ادامه فرآیند خرید </a></button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Content ======-->
+            </div>
+            <!--====== End - Section 3 ======-->
+        </div>

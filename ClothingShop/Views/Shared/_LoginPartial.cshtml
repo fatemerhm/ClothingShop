@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+  <div class="menu-init" id="navigation" dir="rtl">
+
+                            <button class="btn btn--icon toggle-button toggle-button--secondary fas fa-cogs" type="button"></button>
+               <!--====== Menu ======-->
+                            <div class="ah-lg-mode" dir="rtl" >
+
+                                <span class="ah-close">✕ Close</span>
+
+                                <!--====== List ======-->
+                                  <ul class="ah-list ah-list--design1 ah-list--link-color-secondary"  >
+                                    
+                             
+@if (SignInManager.IsSignedIn(User))
+{
+      <li>
+
+                                        <a href="~/home/">  پنل مدیر  </a></li>
+     <li class="has-dropdown"  data-placement="left"  >
+     <a   asp-area="Identity"  >خوش آمدید @User.Identity?.Name!</a>
+      <ul style="width:120px">
+
+    <li >
+        <form  class="form-inline" asp-area="Identity" asp-controller="Identity" asp-action="SignOut" >
+           <li>
+
+                                               <button type="submit" style="background-color:white;border:none;"><i class="fas fa-lock-open u-s-m-r-6"></i>
+
+                                                    <span>خروج</span></button></li>
+        </form>
+    </li>
+       </ul>
+      </li>
+}
+else
+{
+     <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="حساب کاربری" >
+
+                                        <a><i class="far fa-user-circle"></i></a>
+                                        <ul style="width:120px">
+
+                                            <li>
+
+                                                <a href="~/Identity/Register"><i class="fas fa-user-plus u-s-m-r-6"></i>
+
+                                                    <span>ثبت نام</span></a></li>
+                                            <li>
+
+                                                <a href="~/Identity/Login"><i class="fas fa-lock u-s-m-r-6"></i>
+
+                                                    <span>ورود</span></a></li>
+                                           </ul>
+                                           </li>
+                                        <!--====== End - Dropdown ======-->
+}

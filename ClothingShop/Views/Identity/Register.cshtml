@@ -1,0 +1,129 @@
+﻿@model ClothingShop.Models.UserViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+ <div class="u-s-p-b-60">
+
+                <!--====== Section Intro ======-->
+                <div class="section__intro u-s-m-b-60">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section__text-wrap">
+                                    <h1 class="section__heading u-c-secondary">ایجاد یک حساب کاربری</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Intro ======-->
+
+  <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="container">
+                        <div class="row row--center">
+                            <div class="col-lg-6 col-md-8 u-s-m-b-30">
+                                <div class="l-f-o">
+                                    <div class="l-f-o__pad-box" style="text-align:end">
+                                        <h1 class="gl-h1">اطلاعات شخصی</h1>
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="u-s-m-b-30">
+               <label class="gl-label" for="reg-fname">نام *</label>
+                <input asp-for="Name" class="input-text input-text--primary-style" placeholder="First Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="u-s-m-b-30">
+                <label class="gl-label" for="reg-lname">نام خانوادگی *</label>
+                <input asp-for="Lastname" class="input-text input-text--primary-style" placeholder="Last Name" />
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+              <div class="gl-inline">
+                                                <div class="u-s-m-b-30">
+             <!--====== Date of Birth Select-Box ======-->
+
+                                                    <span class="gl-label">تولد</span>
+                                                    <div class="gl-dob">
+                                                          <select class="select-box select-box--primary-style">
+                                                            <option selected>سال</option>
+                                                            @for (var i = 1320; i < 1403; i++)
+                                                            {
+                                                                 <option value="@i">@i</option>
+                                                            }
+                  
+                                                        </select>
+                                                        
+                                                        
+                                                        <select class="select-box select-box--primary-style">
+                                                            <option selected>ماه</option>
+                                                            <option value="male">فروردین</option>
+                                                            <option value="male">اردیبهشت</option>
+                                                            <option value="male">خرداد</option>
+                                                            <option value="male">تیر</option>
+                                                            <option value="male">مرداد</option>
+                                                            <option value="male">شهریور</option>
+                                                            <option value="male">مهر</option>
+                                                            <option value="male">آبان</option>
+                                                            <option value="male">آذر</option>
+                                                            <option value="male">دی</option>
+                                                            <option value="male">بهمن</option>
+                                                            <option value="male">اسفند</option>
+                                                        </select>
+                                                        <select class="select-box select-box--primary-style">
+                                                            <option selected>روز</option>
+                                                            @for (var i = 1; i < 31; i++)
+                                                            {
+                                                                 <option value="@i">@i</option>
+                                                            }
+                                                           
+                                                          
+                                                        </select>
+                                                      </div>
+                                                    <!--====== End - Date of Birth Select-Box ======-->
+                                                </div>
+                                                <div class="u-s-m-b-30">
+
+                                                    <label class="gl-label" for="gender">جنسیت</label><select class="select-box select-box--primary-style u-w-100" id="gender">
+                                                        <option selected>یک گزینه را انتخاب کنید</option>
+                                                        <option value="male">مرد</option>
+                                                        <option value="male">زن</option>
+                                                    </select></div>
+                                            </div>
+            <div class="u-s-m-b-30">
+                <label class="gl-label" for="reg-email">ایمیل *</label>
+                <input asp-for="Email" class="input-text input-text--primary-style" placeholder="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="u-s-m-b-30">
+               <label class="gl-label" for="reg-email">نام کاربری *</label>
+                <input asp-for="Username" class="input-text input-text--primary-style" placeholder="Username" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="u-s-m-b-30">
+                <label class="gl-label" for="reg-password">گذرواژه *</label>
+                <input asp-for="Password" class="input-text input-text--primary-style" placeholder="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+             <div class="u-s-m-b-30">
+               <label class="gl-label" for="reg-password">تکرار گذرواژه *</label>
+
+                <input asp-for="Repassword" class="input-text input-text--primary-style" placeholder="Repassword" />
+                <span asp-validation-for="Repassword" class="text-danger"></span>
+            </div>
+           <div class="u-s-m-b-15" style="text-align:start">
+
+                                                <button class="btn btn--e-transparent-brand-b-2" type="submit">ثبت نام</button></div>
+                                            <a class="gl-link" href="~/home/Store">بازگشت به فروشگاه</a>
+        </form>
+     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Content ======-->
+            </div>
+            <!--====== End - Section 2 ======-->

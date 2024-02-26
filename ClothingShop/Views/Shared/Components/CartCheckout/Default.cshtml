@@ -1,0 +1,57 @@
+﻿@using ClothingShop.Core.Domain
+@model Cart
+@{
+    ViewData["Title"] = "Default";
+}
+
+                                    <div class="o-summary">
+                                        <div class="o-summary__section u-s-m-b-30">
+                                            <div class="o-summary__item-wrap gl-scroll">
+
+                                                  @foreach (var item in Model.CartLines)
+                                             {
+                                                <div class="o-card">
+                                                    <div class="o-card__flex">
+                                                        <div class="o-card__img-wrap">
+
+                                                            <img class="u-img-fluid" src="@item.Product.Medias[0].Path" alt=""></div>
+                                                        <div class="o-card__info-wrap" style="margin-right: 5%;">
+
+                                                            <span class="o-card__name">
+
+                                                                <a href="product-detail.html">@item.Product.Name</a></span>
+
+                                                            <span class="o-card__quantity">@item.Quantity عدد</span>
+
+                                                            <span class="o-card__price">@(item.Product.Price * item.Quantity) تومان</span></div>
+                                                    </div>
+
+                                                    <a class="o-card__del far fa-trash-alt"></a>
+                                                </div>
+                                                
+                                               }
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                         <div class="o-summary__section u-s-m-b-30" dir="ltr">
+                                            <div class="o-summary__box">
+                                                <table class="o-summary__table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>مجموع</td>
+                                                            <td>@Model.GetTotalPrice() تومان</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>هزینه حمل</td>
+                                                            <td>40,000 تومان</td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td >جمع کل</td>
+                                                            <td >@(Model.GetTotalPrice()+40000) تومان</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>

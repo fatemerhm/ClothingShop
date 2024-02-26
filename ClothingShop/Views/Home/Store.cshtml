@@ -1,0 +1,82 @@
+﻿@using ClothingShop.Core.Domain
+@model PagedList<Product>
+@{
+    ViewData["Title"] = "Store";
+}
+
+<div class="u-s-p-y-90"  dir="rtl">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="shop-p">
+                               
+                                </div>
+                                <div class="shop-p__collection">
+                                    <div class="row is-grid-active">
+
+                                       @foreach (var item in Model.Data)
+				                      {
+                                        <div class="col-lg-3 col-md-4 col-sm-6">
+                                            <div class="product-m">
+                                                <div class="product-m__thumb">
+
+                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="~/home/singelproduct/@item.ProductId">
+
+                                                        <img class="aspect__img" src="@item.Medias[0].Path" alt=""></a>
+                                                    <div class="product-m__quick-look">
+
+                                                        <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="مشاهده سریع"></a></div>
+                                                    <div class="product-m__add-cart">
+
+                                                        <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">افزودن به سبد خرید</a></div>
+                                                </div>
+                                                <div class="product-m__content">
+                                                    <div class="product-m__category">
+
+                                                      @*  <a href="shop-side-version-2.html">Men Clothing</a>*@</div>
+                                                    <div class="product-m__name">
+
+                                                       <a href="~/home/singelproduct/@item.ProductId">@item.Name</a></div>
+                                                    <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                                        <span class="product-m__review">(23)</span></div>
+                                                    <div class="product-m__price">@item.Price</div>
+                                                    <div class="product-m__hover">
+                                                        <div class="product-m__preview-description">
+
+                                                            <span>@item.Description</span></div>
+                                                        <div class="product-m__wishlist">
+
+                                                            <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="افزودن به علاقه مندی ها"></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       }
+                                        </div>
+                                   </div>
+                               </div>
+                            </div>
+                               <div class="u-s-p-y-60">
+
+                                    <!--====== Pagination ======-->
+                                    <ul class="shop-p__pagination">
+                             
+                                        @for (int i = 1; i <= Model.TotalPages; i++)
+                                {
+                                        <li>
+                                            <a asp-route-page="@i">@i</a></li>
+                                }
+                                      @*  <li>
+
+                                            <a class="fas fa-angle-right" href="shop-grid-full.html"></a></li>*@
+                                    </ul>
+                                    <!--====== End - Pagination ======-->
+                                </div>
+                             </div>
+                         </div>
+
+
+
+
+

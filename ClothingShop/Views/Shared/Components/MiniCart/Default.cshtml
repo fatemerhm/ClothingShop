@@ -1,0 +1,55 @@
+﻿@using ClothingShop.Core.Domain
+@model Cart
+@{
+    ViewData["Title"] = "Default";
+}
+
+                                   <div class="mini-product-container gl-scroll u-s-m-b-15" >
+
+                                               
+                                                <!--====== Card for mini cart ======-->
+                                                 @foreach (var item in Model.CartLines)
+                                             {
+                                                <div class="card-mini-product">
+                                                    <div class="mini-product">
+                                                        <div class="mini-product__image-wrapper">
+
+                                                            <a class="mini-product__link" href="product-detail.html">
+
+                                                                <img class="u-img-fluid" src="@item.Product.Medias[0].Path" alt=""></a></div>
+                                                        <div class="mini-product__info-wrapper">
+
+                                                           @* <span class="mini-product__category">
+
+                                                                <a href="shop-side-version-2.html">Men Clothing</a></span>*@
+
+                                                            <span class="mini-product__name" style="text-align:right" dir="rtl">
+
+                                                                <a href="product-detail.html">@item.Product.Name</a></span>
+
+                                                            <span class="mini-product__quantity" style="text-align:right" dir="rtl" >@item.Quantity عدد</span>
+
+                                                            <span class="mini-product__price" style="text-align:right" dir="rtl">@(item.Product.Price * item.Quantity) تومان</span></div>
+                                                    </div>
+                                                     <form method="post" asp-controller="Cart" asp-action="RemoveAtCart" asp-route-productId="@item.Product.ProductId">
+                                                    <input class="mini-product__delete-link far fa-trash-alt" type="submit" value="حذف" />
+                                                    </form>
+                                                </div>
+                                                }
+                                                <!--====== End - Card for mini cart ======-->
+
+                                            </div>
+                                             <div class="mini-product-stat">
+                                                <div class="mini-total">
+
+                                                    <span class="subtotal-text">جمع کل</span>
+
+                                                    <span class="subtotal-value">@Model.GetTotalPrice() تومان</span></div>
+                                                <div class="mini-action">
+
+                                                    <a class="mini-link btn--e-brand-b-2" href="~/Checkout/index">ثبت سفارش</a>
+
+                                                    <a class="mini-link btn--e-transparent-secondary-b-2" href="~/cart/index">مشاهده سبد خرید</a></div>
+                                            </div>
+
+
