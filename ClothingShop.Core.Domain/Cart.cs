@@ -19,11 +19,6 @@ namespace ClothingShop.Core.Domain
 
         }
 
-        public virtual void AddWishlist()
-        {
-           
-        }
-
         public virtual void RemoveLine(int productId)
         {
             lines.RemoveAll(a => a.Product.ProductId == productId);
